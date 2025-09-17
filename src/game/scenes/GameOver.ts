@@ -26,11 +26,18 @@ export class GameOver extends Scene
             align: 'center'
         }).setOrigin(0.5).setDepth(100);
         
+        this.gameOverText.setInteractive();
+        this.gameOverText.once('pointerdown', () => { this.startMainMenuScene(); }, this);
+        
         EventBus.emit('current-scene-ready', this);
     }
 
-    changeScene ()
-    {
-        this.scene.start('MainMenu');
+    startMainMenuScene() {
+        this.scene.start("MainMenu");
     }
+
+    // changeScene ()
+    // {
+    //     this.scene.start('MainMenu');
+    // }
 }

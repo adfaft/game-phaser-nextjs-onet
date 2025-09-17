@@ -6,6 +6,7 @@ export class Game extends Scene
     camera: Phaser.Cameras.Scene2D.Camera;
     background: Phaser.GameObjects.Image;
     gameText: Phaser.GameObjects.Text;
+    endText: Phaser.GameObjects.Text;
 
     constructor ()
     {
@@ -26,11 +27,25 @@ export class Game extends Scene
             align: 'center'
         }).setOrigin(0.5).setDepth(100);
 
+        this.endText = this.add.text(512, 512, "End Game",  {
+            fontFamily: 'Arial Black', fontSize: 38, color: '#ffffff',
+            stroke: '#000000', strokeThickness: 8,
+            align: 'center'
+        })
+        .setOrigin(0.5).setDepth(101);
+        this.endText.setInteractive();
+        this.endText.once('pointerdown', () => { this.startEndGameScen(); }, this);
+
+
         EventBus.emit('current-scene-ready', this);
     }
 
-    changeScene ()
-    {
+    startEndGameScen() {
         this.scene.start('GameOver');
     }
+
+    // changeScene ()
+    // {
+    //     this.scene.start('GameOver');
+    // }
 }
