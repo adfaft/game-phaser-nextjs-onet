@@ -4,17 +4,17 @@ import { Game } from "../scenes/Game";
 
 export class Manager{
 
-    bucket: CardTile[]
+    bucket: CardTile[];
     score: number;
 
     constructor(){
-        this.bucket = [];
-        this.score = 0;
+        this.reset();
     }
 
     addToBucket(card: CardTile){
 
         card.setAlphaDown();
+        console.log(card.sprite?.getData('id'));
 
         this.bucket.push(card);
         if( this.bucket.length == 2 ){
@@ -40,4 +40,13 @@ export class Manager{
             EventBus.emit(Game.EVENT_UPDATE_SCORE, this);
         }
     }
+
+    reset(){
+        this.bucket = [];
+        this.score = 0;
+    }
 }
+
+const new_manager = new Manager();
+
+export const game_manager = new_manager;

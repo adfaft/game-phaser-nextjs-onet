@@ -1,3 +1,4 @@
+import { v4 } from "uuid";
 import { EventBus } from "../EventBus";
 
 export class CardTile {
@@ -17,6 +18,7 @@ export class CardTile {
         this.sprite.setInteractive();
         this.sprite.setDataEnabled();
         this.sprite.setData('name', name);
+        this.sprite.setData('id', v4());
 
         this.text = scene.add.text(x, y, name, {
             fontFamily: 'Arial Black', fontSize: 20, color: '#ffffff',
@@ -43,6 +45,7 @@ export class CardTile {
 
     registerEvent() {        
         if( this.sprite ) {
+            this.sprite.off('pointerdown');
             this.sprite.on('pointerdown', () => {                
                 EventBus.emit(CardTile.EVENT_CHOOSEN, this);
             }, this );
@@ -55,7 +58,6 @@ export class CardTile {
     }
 
     onSpriteDestroyed () {
-        this.sprite?.removeAllListeners();
         this.sprite = null;
         this.text = null
     }
