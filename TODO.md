@@ -4,11 +4,14 @@
   - [x] Start Game
   - [x] Play Game
   - [x] End (start again)
-- [ ] Game Scene
+- [ ] Game Action
   - [x] build : generate total gambar randomly
-  - [ ] action : pilih gambar yang sama dan otomatis hilang
+  - [x] action : pilih gambar yang sama dan otomatis hilang
+  - [ ] build : randomize card position
+  - [ ] action : add animation for destroy
   - [ ] action : hanya yang tidak terganggu
 - Level
+  - [ ] add timer
   - [ ] Lavel dengan berbagai mode difficulty
   - [ ] Score system history
 - API
