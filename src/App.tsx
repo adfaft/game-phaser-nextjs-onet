@@ -80,6 +80,15 @@ function App()
         
     }
 
+    const restartScene = () => {
+        if( phaserRef.current){
+            const scene = phaserRef.current.scene;
+            if( scene ){
+                scene.scene.restart();
+            } 
+        }
+    }
+
     return (
         <div id="app">
             <PhaserGame ref={phaserRef} currentActiveScene={currentScene} />
@@ -97,7 +106,7 @@ function App()
                     <button className="button" onClick={addSprite}>Add New Sprite</button>
                 </div> */}
                 <div>
-                    <button className="button" >Test</button>
+                    <button className="button" onClick={restartScene}>Restart Scene</button>
                 </div>
             </div>
         </div>
